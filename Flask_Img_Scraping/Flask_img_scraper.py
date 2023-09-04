@@ -22,11 +22,11 @@ def logic():
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 
-    query_uncoded = urllib.parse.quote(query)
+    query_encoded = urllib.parse.quote(query)
     #The reason we use query_encoded instead of query is to properly handle 
     # special characters and spaces in the search query when constructing the URL
     
-    response = requests.get(f"https://www.google.com/search?sxsrf=AB5stBiKUIC4nSYOZqAmjzbziW63nF1VSQ:1690654990823&q={query_uncoded}&tbm=isch&source=lnms&sa=X&ved=2ahUKEwj4r6nRxLSAAxVZcmwGHaKFBZ0Q0pQJegQIDRAB&biw=1536&bih=707&dpr=1.25")
+    response = requests.get(f"https://www.google.com/search?sxsrf=AB5stBiKUIC4nSYOZqAmjzbziW63nF1VSQ:1690654990823&q={query_encoded}&tbm=isch&source=lnms&sa=X&ved=2ahUKEwj4r6nRxLSAAxVZcmwGHaKFBZ0Q0pQJegQIDRAB&biw=1536&bih=707&dpr=1.25")
 
     soup = bs(response.content , 'html.parser')
 
